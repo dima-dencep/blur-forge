@@ -1,17 +1,26 @@
 package com.tterrag.blur;
 
 import com.tterrag.blur.config.BlurConfig;
+import eu.midnightdust.lib.config.MidnightConfig;
 import eu.midnightdust.lib.util.MidnightColorUtil;
 import ladysnake.satin.api.event.ShaderEffectRenderCallback;
 import ladysnake.satin.api.managed.ManagedShaderEffect;
 import ladysnake.satin.api.managed.ShaderEffectManager;
 import ladysnake.satin.api.managed.uniform.Uniform1f;
-import net.fabricmc.api.ClientModInitializer;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraftforge.client.ConfigScreenHandler;
+import net.minecraftforge.client.event.ScreenEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.IExtensionPoint;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.Identifier;
+import net.minecraftforge.network.NetworkConstants;
 
-public class Blur implements ClientModInitializer {
+@Mod(Blur.MODID)
+public class Blur {
 
     public static final String MODID = "blur";
     public static final MinecraftClient client = MinecraftClient.getInstance();
@@ -23,16 +32,33 @@ public class Blur implements ClientModInitializer {
             shader -> shader.setUniformValue("Radius", (float) BlurConfig.radius));
     private static final Uniform1f blurProgress = blur.findUniform1f("Progress");
 
-    @Override
-    public void onInitializeClient() {
+    public Blur() {
+        ModLoadingContext.get().registerExtensionPoint(
+                IExtensionPoint.DisplayTest.class,
+                () -> new IExtensionPoint.DisplayTest(
+                        () -> NetworkConstants.IGNORESERVERONLY,
+                        (a, b) -> true
+                )
+        );
+
         BlurConfig.init("blur", BlurConfig.class);
 
-        ShaderEffectRenderCallback.EVENT.register((deltaTick) -> {
-            if (start > 0) {
-                blurProgress.set(getProgress(client.currentScreen != null));
-                blur.render(deltaTick);
-            }
-        });
+        ModLoadingContext.get().registerExtensionPoint(
+                ConfigScreenHandler.ConfigScreenFactory.class,
+                () -> new ConfigScreenHandler.ConfigScreenFactory(
+                        (mc, screen) -> MidnightConfig.getScreen(screen, Blur.MODID)
+                )
+        );
+
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    @SubscribeEvent
+    public void onShaderEffectRender(ShaderEffectRenderCallback event) {
+        if (start > 0) {
+            blurProgress.set(getProgress(client.currentScreen != null));
+            blur.render(event.tickDelta);
+        }
     }
 
     private static boolean doFade = false;
