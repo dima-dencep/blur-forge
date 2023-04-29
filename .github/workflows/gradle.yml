@@ -1,15 +1,11 @@
+name: Publish Release
+
 on:
   push:
-    branches: [ "fabric-1.19.3" ]
-  pull_request:
-    branches: [ "fabric-1.19.3" ]
-
-permissions:
-  contents: read
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
