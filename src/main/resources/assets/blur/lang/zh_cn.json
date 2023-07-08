@@ -1,15 +1,15 @@
 {
-  "blur.midnightconfig.title": "模糊 (Blur) 配置",
-  "blur.midnightconfig.category.style": "样式",
-  "blur.midnightconfig.category.screens": "屏幕",
-  "blur.midnightconfig.blurExclusions": "模糊排除",
-  "blur.midnightconfig.fadeTimeMillis": "淡入时间（毫秒）",
-    "blur.midnightconfig.fadeOutTimeMillis": "淡出时间（毫秒）",
-  "blur.midnightconfig.ease": "简单动画",
-  "blur.midnightconfig.radius": "半径",
-  "blur.midnightconfig.gradientStart": "渐变起始色",
-  "blur.midnightconfig.gradientEnd": "渐变结束色",
-  "blur.midnightconfig.gradientStartAlpha": "渐变起始阿尔法通道",
-  "blur.midnightconfig.gradientEndAlpha": "渐变结束阿尔法通道",
-  "blur.midnightconfig.showScreenTitle": "显示屏幕标题"
+  "text.autoconfig.blur.title": "模糊 (Blur) 配置",
+  "text.autoconfig.blur.category.style": "样式",
+  "text.autoconfig.blur.category.screens": "屏幕",
+  "text.autoconfig.blur.option.blurExclusions": "模糊排除",
+  "text.autoconfig.blur.option.fadeTimeMillis": "淡入时间（毫秒）",
+    "text.autoconfig.blur.option.fadeOutTimeMillis": "淡出时间（毫秒）",
+  "text.autoconfig.blur.option.ease": "简单动画",
+  "text.autoconfig.blur.option.radius": "半径",
+  "text.autoconfig.blur.option.gradientStart": "渐变起始色",
+  "text.autoconfig.blur.option.gradientEnd": "渐变结束色",
+  "text.autoconfig.blur.option.gradientStartAlpha": "渐变起始阿尔法通道",
+  "text.autoconfig.blur.option.gradientEndAlpha": "渐变结束阿尔法通道",
+  "text.autoconfig.blur.option.showScreenTitle": "显示屏幕标题"
 }

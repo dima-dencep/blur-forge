@@ -1,12 +1,12 @@
 {
-  "blur.midnightconfig.title": "Configuração de desfoque",
-  "blur.midnightconfig.blurExclusions": "Desfocar exclusões",
-  "blur.midnightconfig.fadeTimeMillis": "Tempo de desvanecimento (em milissegundos)",
-  "blur.midnightconfig.ease": "Animação fácil",
-  "blur.midnightconfig.radius": "Raio",
-  "blur.midnightconfig.gradientStart": "Cor inicial do gradiente",
-  "blur.midnightconfig.gradientEnd": "Cor final do gradiente",
-  "blur.midnightconfig.gradientStartAlpha": "Alfa de início gradiente",
-  "blur.midnightconfig.gradientEndAlpha": "Alfa de Gradiente Final",
-  "blur.midnightconfig.showScreenTitle": "Mostrar título da tela"
+  "text.autoconfig.blur.title": "Configuração de desfoque",
+  "text.autoconfig.blur.option.blurExclusions": "Desfocar exclusões",
+  "text.autoconfig.blur.option.fadeTimeMillis": "Tempo de desvanecimento (em milissegundos)",
+  "text.autoconfig.blur.option.ease": "Animação fácil",
+  "text.autoconfig.blur.option.radius": "Raio",
+  "text.autoconfig.blur.option.gradientStart": "Cor inicial do gradiente",
+  "text.autoconfig.blur.option.gradientEnd": "Cor final do gradiente",
+  "text.autoconfig.blur.option.gradientStartAlpha": "Alfa de início gradiente",
+  "text.autoconfig.blur.option.gradientEndAlpha": "Alfa de Gradiente Final",
+  "text.autoconfig.blur.option.showScreenTitle": "Mostrar título da tela"
 }

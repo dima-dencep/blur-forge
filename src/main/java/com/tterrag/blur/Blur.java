@@ -1,93 +1,94 @@
 package com.tterrag.blur;
 
 import com.tterrag.blur.config.BlurConfig;
-import eu.midnightdust.lib.util.MidnightColorUtil;
 import ladysnake.satin.api.event.ShaderEffectRenderCallback;
 import ladysnake.satin.api.managed.ManagedShaderEffect;
 import ladysnake.satin.api.managed.ShaderEffectManager;
 import ladysnake.satin.api.managed.uniform.Uniform1f;
-import net.fabricmc.api.ClientModInitializer;
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraftforge.client.ConfigScreenHandler;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.IExtensionPoint;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraft.util.Identifier;
+import net.minecraftforge.network.NetworkConstants;
 
-import java.util.Objects;
-
-public class Blur implements ClientModInitializer {
-
-    public static final String MODID = "blur";
+@Mod(Blur.MODID)
+public class Blur {
+    public static final BlurConfig blurConfig = AutoConfig.register(BlurConfig.class, GsonConfigSerializer::new).get();
     public static final MinecraftClient client = MinecraftClient.getInstance();
+    public static final String MODID = "blur";
     public static long start;
-    public static String prevScreen;
-    public static boolean screenHasBackground;
 
     private static final ManagedShaderEffect blur = ShaderEffectManager.getInstance().manage(new Identifier(MODID, "shaders/post/fade_in_blur.json"),
-            shader -> shader.setUniformValue("Radius", (float) BlurConfig.radius));
+            shader -> shader.setUniformValue("Radius", blurConfig.radius));
     private static final Uniform1f blurProgress = blur.findUniform1f("Progress");
 
-    @Override
-    public void onInitializeClient() {
-        BlurConfig.init("blur", BlurConfig.class);
+    public Blur() {
+        ModLoadingContext.get().registerExtensionPoint(
+                IExtensionPoint.DisplayTest.class,
+                () -> new IExtensionPoint.DisplayTest(
+                        () -> NetworkConstants.IGNORESERVERONLY,
+                        (a, b) -> true
+                )
+        );
 
-        ShaderEffectRenderCallback.EVENT.register((deltaTick) -> {
-            if (start > 0) {
-                blurProgress.set(getProgress(client.currentScreen != null));
-                blur.render(deltaTick);
-            }
-        });
+        ModLoadingContext.get().registerExtensionPoint(
+                ConfigScreenHandler.ConfigScreenFactory.class,
+                () -> new ConfigScreenHandler.ConfigScreenFactory(
+                        (mc, screen) -> AutoConfig.getConfigScreen(BlurConfig.class, screen).get()
+                )
+        );
+
+        MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    @SubscribeEvent
+    public void onShaderEffectRender(ShaderEffectRenderCallback event) {
+        if (start > 0) {
+            blurProgress.set(getProgress());
+            blur.render(event.tickDelta);
+        }
     }
 
     private static boolean doFade = false;
 
     public static void onScreenChange(Screen newGui) {
         if (client.world != null) {
-            boolean excluded = newGui == null || BlurConfig.blurExclusions.stream().anyMatch(exclusion -> newGui.getClass().getName().contains(exclusion));
+            boolean excluded = newGui == null || blurConfig.blurExclusions.stream().anyMatch(exclusion -> newGui.getClass().getName().contains(exclusion));
             if (!excluded) {
-                screenHasBackground = false;
-                if (BlurConfig.showScreenTitle) System.out.println(newGui.getClass().getName());
-                blur.setUniformValue("Radius", (float) BlurConfig.radius);
+                if (blurConfig.showScreenTitle) System.out.println(newGui.getClass().getName());
+
+                blur.setUniformValue("Radius", blurConfig.radius);
                 if (doFade) {
                     start = System.currentTimeMillis();
                     doFade = false;
                 }
-                prevScreen = newGui.getClass().getName();
-            } else if (newGui == null && BlurConfig.fadeOutTimeMillis > 0 && !Objects.equals(prevScreen, "")) {
-                blur.setUniformValue("Radius", (float) BlurConfig.radius);
-                start = System.currentTimeMillis();
-                doFade = true;
             } else {
-                screenHasBackground = false;
                 start = -1;
                 doFade = true;
-                prevScreen = "";
             }
         }
     }
 
-    private static float getProgress(boolean fadeIn) {
-        float x;
-        if (fadeIn) {
-            x = Math.min((System.currentTimeMillis() - start) / (float) BlurConfig.fadeTimeMillis, 1);
-            if (BlurConfig.ease) x *= (2 - x);  // easeInCubic
-        }
-        else {
-            x = Math.max(1 + (start - System.currentTimeMillis()) / (float) BlurConfig.fadeOutTimeMillis, 0);
-            if (BlurConfig.ease) x *= (2 - x);  // easeOutCubic
-            if (x <= 0) {
-                start = 0;
-                screenHasBackground = false;
-            }
-        }
+    private static float getProgress() {
+        float x = Math.min((System.currentTimeMillis() - start) / (float) blurConfig.fadeTimeMillis, 1);
+        if (blurConfig.ease) x *= (2 - x);  // easeInCubic
         return x;
     }
 
-    public static int getBackgroundColor(boolean second, boolean fadeIn) {
-        int a = second ? BlurConfig.gradientEndAlpha : BlurConfig.gradientStartAlpha;
-        var col = MidnightColorUtil.hex2Rgb(second ? BlurConfig.gradientEnd : BlurConfig.gradientStart);
-        int r = (col.getRGB() >> 16) & 0xFF;
-        int b = (col.getRGB() >> 8) & 0xFF;
-        int g = col.getRGB() & 0xFF;
-        float prog = getProgress(fadeIn);
+    public static int getBackgroundColor(boolean second) {
+        int col = second ? blurConfig.gradientEnd : blurConfig.gradientStart;
+        int a = col >>> 24;
+        int r = (col >> 16) & 0xFF;
+        int b = (col >> 8) & 0xFF;
+        int g = col & 0xFF;
+        float prog = getProgress();
         a *= prog;
         r *= prog;
         g *= prog;

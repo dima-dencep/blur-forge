@@ -1,11 +1,11 @@
 {
-  "blur.midnightconfig.title": "Blur 설정",
-  "blur.midnightconfig.blurExclusions": "블러 제외",
-  "blur.midnightconfig.fadeTimeMillis": "페이드 시간 (밀리초 단위)",
-  "blur.midnightconfig.radius": "범위",
-  "blur.midnightconfig.gradientStart": "그라디언트 시작 색상",
-  "blur.midnightconfig.gradientEnd": "그라디언트 종료 색상",
-  "blur.midnightconfig.gradientStartAlpha": "그라디언트 시작 알파",
-  "blur.midnightconfig.gradientEndAlpha": "그라디언트 종료 알파",
-  "blur.midnightconfig.showScreenTitle": "화면 타이틀 보기"
+  "text.autoconfig.blur.title": "Blur 설정",
+  "text.autoconfig.blur.option.blurExclusions": "블러 제외",
+  "text.autoconfig.blur.option.fadeTimeMillis": "페이드 시간 (밀리초 단위)",
+  "text.autoconfig.blur.option.radius": "범위",
+  "text.autoconfig.blur.option.gradientStart": "그라디언트 시작 색상",
+  "text.autoconfig.blur.option.gradientEnd": "그라디언트 종료 색상",
+  "text.autoconfig.blur.option.gradientStartAlpha": "그라디언트 시작 알파",
+  "text.autoconfig.blur.option.gradientEndAlpha": "그라디언트 종료 알파",
+  "text.autoconfig.blur.option.showScreenTitle": "화면 타이틀 보기"
 }

@@ -1,4 +1,4 @@
 {
-  "blur.midnightconfig.gradientStart": "Gradient Start Colour",
-  "blur.midnightconfig.gradientEnd": "Gradient End Colour"
+  "text.autoconfig.blur.option.gradientStart": "Gradient Start Colour",
+  "text.autoconfig.blur.option.gradientEnd": "Gradient End Colour"
 }
