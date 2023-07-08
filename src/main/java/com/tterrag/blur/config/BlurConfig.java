@@ -1,36 +1,43 @@
 package com.tterrag.blur.config;
 
 import com.google.common.collect.Lists;
-import eu.midnightdust.lib.config.MidnightConfig;
+import com.tterrag.blur.Blur;
+import me.shedaniel.autoconfig.ConfigData;
+import me.shedaniel.autoconfig.annotation.Config;
+import me.shedaniel.autoconfig.annotation.ConfigEntry;
 import net.minecraft.client.gui.screen.ChatScreen;
 
 import java.util.List;
 
-public class BlurConfig extends MidnightConfig {
+@Config(name = Blur.MODID)
+public class BlurConfig implements ConfigData {
+    @ConfigEntry.Category("screens")
+    public List<String> blurExclusions = Lists.newArrayList(ChatScreen.class.getName(),
+            "com.replaymod.lib.de.johni0702.minecraft.gui.container.AbstractGuiOverlay$UserInputGuiScreen",
+            "ai.arcblroth.projectInception.client.InceptionInterfaceScreen",
+            "net.optifine.gui.GuiChatOF",
+            "io.github.darkkronicle.advancedchatcore.chat.AdvancedChatScreen",
+            "net.coderbot.iris.gui.screen.ShaderPackScreen");
 
-    @Entry
-    public static List<String> blurExclusions = Lists.newArrayList(ChatScreen.class.getName(),
-        "com.replaymod.lib.de.johni0702.minecraft.gui.container.AbstractGuiOverlay$UserInputGuiScreen",
-        "ai.arcblroth.projectInception.client.InceptionInterfaceScreen",
-        "net.optifine.gui.GuiChatOF",
-        "io.github.darkkronicle.advancedchatcore.chat.AdvancedChatScreen",
-        "net.coderbot.iris.gui.screen.ShaderPackScreen");
-    @Entry(min = 0, max = 5000, width = 4)
-    public static int fadeTimeMillis = 200;
-    @Entry(min = 0, max = 5000, width = 4)
-    public static int fadeOutTimeMillis = 0;
-    @Entry
-    public static boolean ease = true;
-    @Entry(isSlider = true, min = 0, max = 100)
-    public static int radius = 8;
-    @Entry(isColor = true, width = 7, min = 7)
-    public static String gradientStart = "#000000";
-    @Entry(isSlider = true, min = 0, max = 255)
-    public static int gradientStartAlpha = 75;
-    @Entry(isColor = true, width = 7, min = 7)
-    public static String gradientEnd = "#000000";
-    @Entry(isSlider = true, min = 0, max = 255)
-    public static int gradientEndAlpha = 75;
-    @Entry
-    public static boolean showScreenTitle = false;
+    @ConfigEntry.Category("style")
+    @ConfigEntry.BoundedDiscrete(max = 5000)
+    public int fadeTimeMillis = 200;
+
+    @ConfigEntry.Category("style")
+    public boolean ease = true;
+
+    @ConfigEntry.Category("style")
+    @ConfigEntry.BoundedDiscrete(max = 100)
+    public float radius = 8;
+
+    @ConfigEntry.Category("style")
+    @ConfigEntry.ColorPicker(allowAlpha = true)
+    public int gradientStart = 0x000000;
+
+    @ConfigEntry.Category("style")
+    @ConfigEntry.ColorPicker(allowAlpha = true)
+    public int gradientEnd = 0x000000;
+
+    @ConfigEntry.Category("screens")
+    public boolean showScreenTitle = false;
 }
