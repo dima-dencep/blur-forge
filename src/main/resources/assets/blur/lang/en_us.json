@@ -1,15 +1,15 @@
 {
-  "blur.midnightconfig.title": "Blur Config",
-  "blur.midnightconfig.category.style": "Style",
-  "blur.midnightconfig.category.screens": "Screens",
-  "blur.midnightconfig.blurExclusions": "Blur Exclusions",
-  "blur.midnightconfig.fadeTimeMillis": "Fade Time (in milliseconds)",
-  "blur.midnightconfig.fadeOutTimeMillis": "Fade Out Time (in milliseconds)",
-  "blur.midnightconfig.ease": "Ease Animation",
-  "blur.midnightconfig.radius": "Radius",
-  "blur.midnightconfig.gradientStart": "Gradient Start Color",
-  "blur.midnightconfig.gradientEnd": "Gradient End Color",
-  "blur.midnightconfig.gradientStartAlpha": "Gradient Start Alpha",
-  "blur.midnightconfig.gradientEndAlpha": "Gradient End Alpha",
-  "blur.midnightconfig.showScreenTitle": "Log screen title"
+  "text.autoconfig.blur.title": "Blur Config",
+  "text.autoconfig.blur.category.style": "Style",
+  "text.autoconfig.blur.category.screens": "Screens",
+  "text.autoconfig.blur.option.blurExclusions": "Blur Exclusions",
+  "text.autoconfig.blur.option.fadeTimeMillis": "Fade Time (in milliseconds)",
+  "text.autoconfig.blur.option.fadeOutTimeMillis": "Fade Out Time (in milliseconds)",
+  "text.autoconfig.blur.option.ease": "Ease Animation",
+  "text.autoconfig.blur.option.radius": "Radius",
+  "text.autoconfig.blur.option.gradientStart": "Gradient Start Color",
+  "text.autoconfig.blur.option.gradientEnd": "Gradient End Color",
+  "text.autoconfig.blur.option.gradientStartAlpha": "Gradient Start Alpha",
+  "text.autoconfig.blur.option.gradientEndAlpha": "Gradient End Alpha",
+  "text.autoconfig.blur.option.showScreenTitle": "Log screen title"
 }

@@ -23,13 +23,13 @@ side = "BOTH"
 [[dependencies.blur]]
 modId = "satin"
 mandatory = true
-versionRange = "[1.19.2+1.11.0,)"
+versionRange = "*"
 ordering = "NONE"
 side = "CLIENT"
 
 [[dependencies.blur]]
-modId = "midnightlib"
+modId = "cloth_config"
 mandatory = true
-versionRange = "[1.0.0,)"
+versionRange = "*"
 ordering = "NONE"
 side = "CLIENT"

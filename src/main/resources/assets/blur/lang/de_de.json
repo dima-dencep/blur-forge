@@ -1,15 +1,15 @@
 {
-  "blur.midnightconfig.title": "Blur Konfiguration",
-  "blur.midnightconfig.blurExclusions": "Blur-Ausnahmen",
-  "blur.midnightconfig.category.style": "Stil",
-  "blur.midnightconfig.category.screens": "Bildschirme",
-  "blur.midnightconfig.fadeTimeMillis": "Überblendzeit (in Millisekunden)",
-  "blur.midnightconfig.fadeOutTimeMillis": "Ausblendzeit (in milliseconds)",
-  "blur.midnightconfig.ease": "Geschmeidige Animation",
-  "blur.midnightconfig.radius": "Radius",
-  "blur.midnightconfig.gradientStart": "Farbverlauf-Anfangsfarbe",
-  "blur.midnightconfig.gradientEnd": "Farbverlauf-Endfarbe",
-  "blur.midnightconfig.gradientStartAlpha": "Farbverlauf-Anfangstransparenz",
-  "blur.midnightconfig.gradientEndAlpha": "Farbverlauf-Endstransparenz",
-  "blur.midnightconfig.showScreenTitle": "Logge Bildschirmtitel"
+  "text.autoconfig.blur.title": "Blur Konfiguration",
+  "text.autoconfig.blur.option.blurExclusions": "Blur-Ausnahmen",
+  "text.autoconfig.blur.category.style": "Stil",
+  "text.autoconfig.blur.category.screens": "Bildschirme",
+  "text.autoconfig.blur.option.fadeTimeMillis": "Überblendzeit (in Millisekunden)",
+  "text.autoconfig.blur.option.fadeOutTimeMillis": "Ausblendzeit (in milliseconds)",
+  "text.autoconfig.blur.option.ease": "Geschmeidige Animation",
+  "text.autoconfig.blur.option.radius": "Radius",
+  "text.autoconfig.blur.option.gradientStart": "Farbverlauf-Anfangsfarbe",
+  "text.autoconfig.blur.option.gradientEnd": "Farbverlauf-Endfarbe",
+  "text.autoconfig.blur.option.gradientStartAlpha": "Farbverlauf-Anfangstransparenz",
+  "text.autoconfig.blur.option.gradientEndAlpha": "Farbverlauf-Endstransparenz",
+  "text.autoconfig.blur.option.showScreenTitle": "Logge Bildschirmtitel"
 }

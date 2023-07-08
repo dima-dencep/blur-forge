@@ -1,8 +1,11 @@
 {
-  "blur.midnightconfig.title": "Настройки Blur",
-  "blur.midnightconfig.blurExclusions": "Исключения размытия",
-  "blur.midnightconfig.fadeTimeMillis": "Время размытия (в милисекундах)",
-  "blur.midnightconfig.radius": "Радиус размытия",
-  "blur.midnightconfig.gradientStart": "Верхний цвет градиента",
-  "blur.midnightconfig.gradientEnd": "Нижний цвет градиента"
+  "text.autoconfig.blur.title": "Настройки Blur",
+  "text.autoconfig.blur.category.style": "Стиль",
+  "text.autoconfig.blur.category.screens": "Экраны",
+  "text.autoconfig.blur.option.blurExclusions": "Исключения размытия",
+  "text.autoconfig.blur.option.fadeTimeMillis": "Время размытия (в миллисекундах)",
+  "text.autoconfig.blur.option.ease": "Облегчение анимации анимацию",
+  "text.autoconfig.blur.option.radius": "Радиус размытия",
+  "text.autoconfig.blur.option.gradientStart": "Верхний цвет градиента",
+  "text.autoconfig.blur.option.gradientEnd": "Нижний цвет градиента"
 }

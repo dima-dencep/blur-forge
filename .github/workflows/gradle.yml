@@ -68,7 +68,7 @@ jobs:
             ${{ steps.read_property.outputs.minecraft_version }}
 
           dependencies: |
-            midnightlib | depends | *
+            cloth-config | depends | *
 
           java: |
             17
