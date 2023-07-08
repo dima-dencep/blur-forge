@@ -7,9 +7,6 @@ import net.minecraft.client.gui.screen.ChatScreen;
 import java.util.List;
 
 public class BlurConfig extends MidnightConfig {
-    public static final String style = "style";
-    public static final String screens = "screens";
-
 
     @Entry
     public static List<String> blurExclusions = Lists.newArrayList(ChatScreen.class.getName(),
