@@ -39,14 +39,14 @@ public abstract class MixinScreen {
     }
 
     @ModifyConstant(
-            method = "renderBackground",
+            method = "renderBackground(Lnet/minecraft/client/util/math/MatrixStack;I)V",
             constant = @Constant(intValue = -1072689136))
     private int blur$getFirstBackgroundColor(int color) {
         return Blur.getBackgroundColor(false, true);
     }
 
     @ModifyConstant(
-            method = "renderBackground",
+            method = "renderBackground(Lnet/minecraft/client/util/math/MatrixStack;I)V",
             constant = @Constant(intValue = -804253680))
     private int blur$getSecondBackgroundColor(int color) {
         return Blur.getBackgroundColor(true, true);
