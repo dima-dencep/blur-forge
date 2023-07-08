@@ -11,14 +11,14 @@ import net.minecraft.client.gui.screen.Screen;
 @Mixin(Screen.class)
 public abstract class MixinScreen {
     @ModifyConstant(
-            method = "renderBackground(Lnet/minecraft/client/util/math/MatrixStack;I)V",
+            method = "renderBackground(Lnet/minecraft/client/gui/DrawContext;)V",
             constant = @Constant(intValue = -1072689136))
     private int blur$getFirstBackgroundColor(int color) {
         return Blur.getBackgroundColor(false);
     }
 
     @ModifyConstant(
-            method = "renderBackground(Lnet/minecraft/client/util/math/MatrixStack;I)V",
+            method = "renderBackground(Lnet/minecraft/client/gui/DrawContext;)V",
             constant = @Constant(intValue = -804253680))
     private int blur$getSecondBackgroundColor(int color) {
         return Blur.getBackgroundColor(true);
