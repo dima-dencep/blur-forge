@@ -8,6 +8,7 @@ import ladysnake.satin.api.managed.uniform.Uniform1f;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.util.Identifier;
+import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
@@ -37,7 +38,11 @@ public class Blur {
                 blur.render(event.tickDelta);
             }
         });
-
+        MinecraftForge.EVENT_BUS.<RenderGuiEvent.Post>addListener(event -> {
+            if (client.currentScreen == null && client.world != null && Blur.start > 0 && BlurConfig.INSTANCE.blurExclusions.get().stream().noneMatch(exclusion -> Blur.prevScreen.startsWith(exclusion)) && Blur.screenHasBackground) {
+                event.getGuiGraphics().fillGradient(0, 0, event.getWindow().getScaledWidth(), event.getWindow().getScaledHeight(), Blur.getBackgroundColor(false, false), Blur.getBackgroundColor(true, false));
+            }
+        });
         MinecraftForge.EVENT_BUS.<ScreenEvent.BackgroundRendered>addListener(event -> Blur.screenHasBackground = true);
         MinecraftForge.EVENT_BUS.<ScreenEvent.Opening>addListener(event -> {
             if (event.getCurrentScreen() != null) {

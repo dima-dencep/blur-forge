@@ -12,14 +12,22 @@ import net.minecraft.client.gui.screen.Screen;
 public abstract class MixinScreen {
     @ModifyConstant(
             method = "renderBackground",
-            constant = @Constant(intValue = -1072689136))
+            constant = @Constant(
+                    intValue = -1072689136
+            ),
+            require = 0
+    )
     private int blur$getFirstBackgroundColor(int color) {
         return Blur.getBackgroundColor(false, true);
     }
 
     @ModifyConstant(
             method = "renderBackground",
-            constant = @Constant(intValue = -804253680))
+            constant = @Constant(
+                    intValue = -804253680
+            ),
+            require = 0
+    )
     private int blur$getSecondBackgroundColor(int color) {
         return Blur.getBackgroundColor(true, true);
     }

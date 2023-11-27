@@ -4,8 +4,7 @@
   "package": "com.tterrag.blur.mixin",
   "compatibilityLevel": "JAVA_17",
   "client": [
-    "MixinScreen",
-    "MixinInGameHud"
+    "MixinScreen"
   ],
   "injectors": {
     "defaultRequire": 1
