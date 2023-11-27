@@ -40,8 +40,10 @@ public class BlurConfig {
                         "com.replaymod.lib.de.johni0702.minecraft.gui.container.AbstractGuiOverlay$UserInputGuiScreen",
                         "ai.arcblroth.projectInception.client.InceptionInterfaceScreen",
                         "net.optifine.gui.GuiChatOF",
+                        "baritone.",
                         "io.github.darkkronicle.advancedchatcore.chat.AdvancedChatScreen",
-                        "net.coderbot.iris.gui.screen.ShaderPackScreen"),
+                        "net.coderbot.iris.gui.screen.ShaderPackScreen",
+                        "eu.midnightdust.midnightcontrols.client.gui.TouchscreenOverlay"),
                         o -> o != null && List.class.isAssignableFrom(o.getClass())
                 );
 

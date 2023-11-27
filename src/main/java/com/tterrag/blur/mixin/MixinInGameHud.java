@@ -20,7 +20,7 @@ public abstract class MixinInGameHud extends InGameHud {
 
     @Inject(at = @At("TAIL"), method = "render")
     public void blur$onRender(DrawContext context, float tickDelta, CallbackInfo ci) {
-        if (client.currentScreen == null && client.world != null && Blur.start > 0 && !BlurConfig.INSTANCE.blurExclusions.get().contains(Blur.prevScreen) && Blur.screenHasBackground) {
+        if (client.currentScreen == null && client.world != null && Blur.start > 0 && BlurConfig.INSTANCE.blurExclusions.get().stream().noneMatch(exclusion -> Blur.prevScreen.startsWith(exclusion)) && Blur.screenHasBackground) {
             context.fillGradient(0, 0, this.scaledWidth, this.scaledHeight, Blur.getBackgroundColor(false, false), Blur.getBackgroundColor(true, false));
         }
     }

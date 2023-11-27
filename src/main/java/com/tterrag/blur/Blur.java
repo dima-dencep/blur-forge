@@ -55,7 +55,7 @@ public class Blur {
         String guiClassName = newGui == null ? null : newGui.getClass().getName();
 
         if (client.world != null) {
-            boolean excluded = newGui == null || BlurConfig.INSTANCE.blurExclusions.get().parallelStream().anyMatch(guiClassName::contains);
+            boolean excluded = newGui == null || BlurConfig.INSTANCE.blurExclusions.get().parallelStream().anyMatch(guiClassName::startsWith);
             if (!excluded) {
                 screenHasBackground = false;
                 if (BlurConfig.INSTANCE.showScreenTitle.get()) System.out.println(guiClassName);
