@@ -1,6 +1,15 @@
 plugins {
-	id 'fabric-loom' version '1.2-SNAPSHOT'
+	id 'dev.architectury.loom' version '1.2-SNAPSHOT'
+	id "io.github.p03w.machete" version "2.+"
 	id 'maven-publish'
+}
+
+loom {
+	forge {
+		mixinConfigs = [
+				"mixins.blur.json"
+		]
+	}
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -12,42 +21,26 @@ group = project.maven_group
 
 repositories {
 	maven {
-		name = 'Ladysnake Mods'
-		url = 'https://ladysnake.jfrog.io/artifactory/mods'
+		name = 'ConstructLegacy'
+		url = 'https://repo.constructlegacy.ru/public'
 		content {
-			includeGroup 'io.github.ladysnake'
-			includeGroupByRegex 'io\\.github\\.onyxstudios.*'
+			includeGroup 'com.github.dima_dencep.mods'
 		}
-	}
-	maven {
-		url = 'https://maven.terraformersmc.com/releases'
-		content {
-			includeGroup 'com.terraformersmc'
-		}
-	}
-	maven {
-		url = "https://api.modrinth.com/maven"
 	}
 }
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	forge "net.minecraftforge:forge:${project.loader_version}"
 
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modImplementation "io.github.ladysnake:satin:${satin_version}"
-	include "io.github.ladysnake:satin:${satin_version}"
-
-	implementation 'com.google.code.findbugs:jsr305:3.0.2'
-	modImplementation "maven.modrinth:midnightlib:${project.midnightlib_version}"
-	include "maven.modrinth:midnightlib:${project.midnightlib_version}"
+	modImplementation include("com.github.dima_dencep.mods:satin-forge:${satin_version}")
 }
 
 processResources {
 	inputs.property "version", project.version
 
-	filesMatching("fabric.mod.json") {
+	filesMatching("META-INF/mods.toml") {
 		expand "version": project.version
 	}
 }
@@ -63,6 +56,11 @@ java {
 
 jar {
 	from "LICENSE"
+}
+
+machete {
+	ignoredTasks.add("shadowJar")
+	ignoredTasks.add("jar")
 }
 
 // configure the maven publication

@@ -11,5 +11,6 @@
   "blur.midnightconfig.gradientEnd": "Gradient End Color",
   "blur.midnightconfig.gradientStartAlpha": "Gradient Start Alpha",
   "blur.midnightconfig.gradientEndAlpha": "Gradient End Alpha",
-  "blur.midnightconfig.showScreenTitle": "Log screen title"
+  "blur.midnightconfig.showScreenTitle": "Log screen title",
+  "blur.midnightconfig.strangeEffect": "Strange effect..."
 }

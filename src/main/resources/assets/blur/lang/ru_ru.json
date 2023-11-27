@@ -1,8 +1,16 @@
 {
   "blur.midnightconfig.title": "Настройки Blur",
+  "blur.midnightconfig.category.style": "Стиль",
+  "blur.midnightconfig.category.screens": "Экраны",
   "blur.midnightconfig.blurExclusions": "Исключения размытия",
-  "blur.midnightconfig.fadeTimeMillis": "Время размытия (в милисекундах)",
+  "blur.midnightconfig.fadeTimeMillis": "Время замытия (в миллисекундах)",
+  "blur.midnightconfig.fadeOutTimeMillis": "Время размытия (в миллисекундах)",
+  "blur.midnightconfig.ease": "Облегчение анимации",
   "blur.midnightconfig.radius": "Радиус размытия",
   "blur.midnightconfig.gradientStart": "Верхний цвет градиента",
-  "blur.midnightconfig.gradientEnd": "Нижний цвет градиента"
+  "blur.midnightconfig.gradientEnd": "Нижний цвет градиента",
+  "blur.midnightconfig.gradientStartAlpha": "Альфа верхнего градиента",
+  "blur.midnightconfig.gradientEndAlpha": "Альфа нижнего градиента",
+  "blur.midnightconfig.showScreenTitle": "Отображение название экрана",
+  "blur.midnightconfig.strangeEffect": "Странный эффект..."
 }
