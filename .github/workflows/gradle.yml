@@ -44,10 +44,10 @@ jobs:
       - name: Publish to Modrinth & CurseForge
         uses: Kir-Antipov/mc-publish@v3.3
         with:
-          modrinth-id: oY2B1pjg
+          modrinth-id: o4Wx4DUB
           modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
-          curseforge-id: 654373
+          curseforge-id: 823106
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
           github-token: ${{ secrets.GITHUB_TOKEN }}
