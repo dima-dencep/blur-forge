@@ -9,6 +9,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.util.Identifier;
 import net.minecraftforge.client.event.ScreenEvent;
+import net.minecraftforge.client.event.ScreenOpenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 
@@ -21,7 +22,6 @@ public class Blur {
     public static final MinecraftClient client = MinecraftClient.getInstance();
     public static long start;
     public static String prevScreen;
-    public static String oldScreen;
     public static boolean screenHasBackground;
 
     private static final ManagedShaderEffect blur = ShaderEffectManager.getInstance().manage(new Identifier(MODID, "shaders/post/fade_in_blur.json"),
@@ -38,15 +38,8 @@ public class Blur {
             }
         });
 
-        MinecraftForge.EVENT_BUS.<ScreenEvent.BackgroundRendered>addListener(event -> Blur.screenHasBackground = true);
-        MinecraftForge.EVENT_BUS.<ScreenEvent.Opening>addListener(event -> {
-            if (event.getCurrentScreen() != null) {
-                oldScreen = event.getCurrentScreen().getClass().getName();
-            }
-
-            Blur.onScreenChange(event.getNewScreen());
-        });
-        MinecraftForge.EVENT_BUS.<ScreenEvent.Closing>addListener(event -> Blur.onScreenChange(BlurConfig.INSTANCE.strangeEffect.get() ? null : Objects.equals(oldScreen, event.getScreen().getClass().getName()) ? event.getScreen() : null));
+        MinecraftForge.EVENT_BUS.<ScreenEvent.BackgroundDrawnEvent>addListener(event -> Blur.screenHasBackground = true);
+        MinecraftForge.EVENT_BUS.<ScreenOpenEvent>addListener(event -> Blur.onScreenChange(event.getScreen()));
     }
 
     private static boolean doFade = false;

@@ -11,6 +11,5 @@
   "blur.midnightconfig.gradientEnd": "Нижний цвет градиента",
   "blur.midnightconfig.gradientStartAlpha": "Альфа верхнего градиента",
   "blur.midnightconfig.gradientEndAlpha": "Альфа нижнего градиента",
-  "blur.midnightconfig.showScreenTitle": "Отображение название экрана",
-  "blur.midnightconfig.strangeEffect": "Странный эффект..."
+  "blur.midnightconfig.showScreenTitle": "Отображение название экрана"
 }

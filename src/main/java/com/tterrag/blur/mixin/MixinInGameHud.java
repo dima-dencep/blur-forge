@@ -4,18 +4,17 @@ import com.tterrag.blur.Blur;
 import com.tterrag.blur.config.BlurConfig;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.InGameHud;
-import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraftforge.client.gui.overlay.ForgeGui;
+import net.minecraftforge.client.gui.ForgeIngameGui;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(ForgeGui.class)
+@Mixin(ForgeIngameGui.class)
 public abstract class MixinInGameHud extends InGameHud {
-    public MixinInGameHud(MinecraftClient client, ItemRenderer itemRenderer) {
-        super(client, itemRenderer);
+    public MixinInGameHud(MinecraftClient client) {
+        super(client);
     }
 
     @Inject(at = @At("TAIL"), method = "render")

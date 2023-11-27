@@ -27,7 +27,6 @@ public class BlurConfig {
     public final ForgeConfigSpec.ConfigValue<String> gradientEnd;
     public final ForgeConfigSpec.IntValue gradientEndAlpha;
     public final ForgeConfigSpec.BooleanValue showScreenTitle;
-    public final ForgeConfigSpec.BooleanValue strangeEffect;
 
     public BlurConfig(ForgeConfigSpec.Builder builder) {
         builder
@@ -50,10 +49,6 @@ public class BlurConfig {
         showScreenTitle = builder
                 .translation("blur.midnightconfig.showScreenTitle")
                 .define("showScreenTitle", false);
-
-        strangeEffect = builder
-                .translation("blur.midnightconfig.strangeEffect")
-                .define("strangeEffect", false);
 
         builder.pop();
 
