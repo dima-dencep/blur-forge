@@ -11,7 +11,7 @@ import net.minecraft.client.gui.screen.Screen;
 @Mixin(Screen.class)
 public abstract class MixinScreen {
     @ModifyConstant(
-            method = "renderBackground",
+            method = "renderBackground(Lnet/minecraft/client/util/math/MatrixStack;I)V",
             constant = @Constant(
                     intValue = -1072689136
             ),
@@ -22,7 +22,7 @@ public abstract class MixinScreen {
     }
 
     @ModifyConstant(
-            method = "renderBackground",
+            method = "renderBackground(Lnet/minecraft/client/util/math/MatrixStack;I)V",
             constant = @Constant(
                     intValue = -804253680
             ),
